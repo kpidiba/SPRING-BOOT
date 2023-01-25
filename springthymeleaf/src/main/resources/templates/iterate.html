@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        ...
+    </head>
+
+    <body>
+        <h3>ITERATION</h3>
+        <p th:text="'value of tab: ' + ${tab}"></p>
+        <div th:each="n,status : ${tab}" th:with="i=4" >
+           <p th:text="'current index: '+ ${status.index} + ' value: ' +${n}" ></p>
+           <p th:text="'size tab: ' + ${status.size} + ' count: '+ ${status.count}"></p>
+        </div>
+    </body>
+</html>

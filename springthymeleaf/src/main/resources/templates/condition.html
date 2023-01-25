@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        ...
+    </head>
+
+    <body>
+        <h1>Condition Thymeleaf</h1>
+        <p th:text="'conditon: '+${value} ? 'ACTIVE' :'NOT ACTIVE'"></p>
+        <p th:style="${!value}? 'color:red':'color:blue'">Value is REd</p>
+        <p th:if="${gender} == 'Masculins'" th:text="${gender}">
+        </p>
+
+        <div th:switch="__${#locale.language}__">
+            <p th:case="en">English</p>
+            <p th:case="es">Español</p>
+            <p th:case="ca">Català</p>
+            <p th:case="*">English</p>
+        </div>
+    </body>
+</html>
