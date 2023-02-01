@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <footer th:fragment="footer1(title,subTitle)">
+      <div class="container">
+        <h1 th:text="${title}"></h1>
+        <h1 th:text="${subTitle}"></h1>
+          <h2>Provide Exception</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui magni
+          nihil doloribus ducimus soluta sit voluptates ab, consequatur amet,
+          quis, alias aliquam eos voluptatibus aspernatur quaerat voluptate! Ex,
+          praesentium omnis!
+        </p>
+
+      </div>
+    </footer>
+  </body>
+</html>
