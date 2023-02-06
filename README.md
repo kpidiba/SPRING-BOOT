@@ -3,6 +3,7 @@
 Spring boot is   module of spring framework which we speed up the development,It' s provides an easier and faster way to set up, configure and run both simple and web-based  applications.
 
 - Scan the class path and find  the dependency it will  automatically configure the things.
+- define **controller folder in** the Main class folder or main package
 
 ### APPLICATION PROPERTIES
 
@@ -45,3 +46,13 @@ Because of the inheritance mentioned above, `JpaRepository` will have all the 
 
 - | [`spring.data.rest.base-path`](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.data.spring.data.rest.base-path) | Base path to be used by Spring Data REST to expose repository resources. |
   | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+
+### ADD CSS AND JS
+
+- create **css and js** folder in static
+
+- link it with
+
+```html
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+```

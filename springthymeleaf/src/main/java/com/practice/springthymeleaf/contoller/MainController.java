@@ -43,5 +43,4 @@ public class MainController {
     public String templateHandler(){
         return "templat";
     }
-
 }
