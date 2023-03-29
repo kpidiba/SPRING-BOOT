@@ -1,0 +1,6 @@
+## command to see thymeleaf version
+- mvn dependency:list -DincludeArtifactIds=thymeleaf
+## to run maven command is vs code
+- Ctrl+shift+p
+- tap maven execute command
+- custom and add your commande without mvn

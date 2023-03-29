@@ -1,0 +1,5 @@
+- add data.sql to resources folder
+- add this line to application.properties
+spring.jpa.defer-datasource-initialization=true
+spring.sql.init.mode=always
+- add sql statement iin data.sql

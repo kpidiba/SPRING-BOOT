@@ -5,6 +5,71 @@ Spring boot is   module of spring framework which we speed up the development,
 - Scan the class path and find  the dependency it will  automatically configure the things.
 - define **controller folder in** the Main class folder or main package
 
+## TABLE OF CONTENT
+
+### I- [SPRING FRAMEWORK](https://github.com/kpidiba/SPRING-FRAMEWORK)
+
+### II- [SERVLET](https://github.com/kpidiba/JSP---Servlet)
+
+### III- [SPRING SECURITY]()
+
+### IV- [REST API]()
+
+### V- [TRICKS]()
+
+### VI- [BUGS]()
+
+### RUN SPRING BOOT APPLICATION AS A WINDOWS SERVICE
+
+- add this to pom.xml
+
+```xml
+<build>
+    <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+        </plugins>
+</build>
+```
+
+- maven clean
+
+- maven install
+
+- you will find jar file in target folder
+
+- Download in github winsw ,winsw repo the **sample-minimal.xml** and **WinSWNet4.exe** 
+
+- copy this three file in one same folder
+
+- change **sample-minimal.xml** put in <id></id> project name
+
+- put in <name></name> project name
+
+- replace <executable></executable> with
+
+```xml
+<!-- Path to the executable, which should be started -->
+  <executable>java</executable>
+  <arguments>-jar application_name.jar</arguments>
+```
+
+- change **sample-minimal** name with **WinSWNet4**
+
+- launch
+
+```bash
+WinSWNet4.exe install //to install
+WinSWNet4.exe uninstall //to uninstall
+```
+
+- search in service to find him
+
 ### APPLICATION PROPERTIES
 
 Application Properties support us to work in different environments. In this chapter, you are going to learn how to configure and specify the properties to a Spring Boot application.

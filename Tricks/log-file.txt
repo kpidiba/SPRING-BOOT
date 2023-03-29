@@ -1,0 +1,2 @@
+logging.file.path=C:/Users/kpidi/logs
+add this line to app properties

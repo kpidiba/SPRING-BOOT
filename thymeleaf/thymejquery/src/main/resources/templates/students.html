@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{~/webjars/bootstrap/5.2.3/css/bootstrap.css}">
+    <script type="text/javascript" th:src="@{~/webjars/jquery/3.6.3/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{~/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>List of students</h2>
+    <div class="table-responsive-lg">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@getbootstrap">ENREGISTRER</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/students/addStudent}" method="POST">
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Nom:</label>
+                                <input type="text" name="nom" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Departement:</label>
+                                <input type="text" name="departement" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Updated by:</label>
+                                <input type="text" name="updateBy" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">updated on:</label>
+                                <input type="text" name="updateOn" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Departement</th>
+                    <th scope="col">Updated By</th>
+                    <th scope="col">Updated On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.id}"></td>
+                    <td th:text="${student.nom}"></td>
+                    <td th:text="${student.departement}"></td>
+                    <td th:text="${student.updateBy}"></td>
+                    <td th:text="${student.updateOn}"></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const exampleModal = document.getElementById('exampleModal')
+        exampleModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const recipient = button.getAttribute('data-bs-whatever')
+            // If necessary, you could initiate an AJAX request here
+            // and then do the updating in a callback.
+            //
+            // Update the modal's content.
+            // Button that triggered the modal
+            const modalTitle = exampleModal.querySelector('.modal-title')
+            const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+            modalTitle.textContent = `Enregistrer`
+        })
+    </script>
+
+</body>
+
+</html>

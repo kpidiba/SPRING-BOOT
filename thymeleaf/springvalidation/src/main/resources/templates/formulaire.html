@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="text-center">
+        <h1>Formulaire</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <form id="form" th:action="@{/process}" method="post" th:object="${loginData}">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                th:value="${loginData.username}"
+                th:classappend="${#fields.hasErrors('username')?'is-invalid':''}"
+                name="username"
+                id="username"
+                />
+                <p style="color:red" th:each="e : ${#fields.errors('username')}" th:text="${e}">
+
+                </p>
+              <!-- <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div> -->
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" name="email" class="form-control" th:classappend="${#fields.hasErrors('email')?'is-invalid':''}" th:value="${loginData.email}" id="email" />
+              <p style="color:red" th:each="e : ${#fields.errors('email')}" th:text="${e}">
+                
+              </p>
+            </div>
+            
+            <button type="button" onclick="add()" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script th:src="@{~/jquery-3.2.1.min.js}"></script>
+    <script>
+      $(document).ready(function() {
+    $.ajax({
+        url: "http://rest-service.guides.spring.io/greeting"
+    }).then(function(data) {
+       $('.greeting-id').append(data.id);
+       $('.greeting-content').append(data.content);
+    });
+});
+    </script>
+  </body>
+</html>

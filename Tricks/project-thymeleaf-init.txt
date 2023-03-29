@@ -1,0 +1,13 @@
+## Dependencies
+- lombook
+- jpa
+- spring web
+- devtool
+
+## configure
+- define logs(application.properties)
+logging.file.path=C:/Users/kpidi/logs
+
+## database seed 
+- static data
+- data for test
