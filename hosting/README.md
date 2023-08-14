@@ -1,11 +1,10 @@
-# SPRING-BOOT
+# HOSTING
 
-Spring boot is   module of spring framework which we speed up the development,It' s provides an easier and faster way to set up, configure and run both simple and web-based  applications.
+## RENDER.COM
 
-- Scan the class path and find  the dependency it will  automatically configure the things.
-- define **controller folder in** the Main class folder or main package
+- create an account on the website and link it to github and gitlab
 
-## TABLE OF CONTENT
+- 
 
 ### I- [SPRING FRAMEWORK](https://github.com/kpidiba/SPRING-FRAMEWORK)
 

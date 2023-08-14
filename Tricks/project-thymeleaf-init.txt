@@ -3,6 +3,9 @@
 - jpa
 - spring web
 - devtool
+- JPA
+- SPRING SECURITY
+- MYSQL
 
 ## configure
 - define logs(application.properties)
