@@ -1,3 +1,0 @@
-# HOSTING RENDER
-
-- 

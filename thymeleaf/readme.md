@@ -16,4 +16,4 @@ With modules for Spring Framework, a host of integrations with your favourite to
 
 - [**spring thymeleaf**]()
 
-- [**thymeleaf smartproject**]()
+- [**thymeleaf smartproject**]() 
