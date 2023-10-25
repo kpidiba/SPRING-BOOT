@@ -37,7 +37,7 @@
             </p>
           </div>
 
-          <button type="button" onclick="add()" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
@@ -46,10 +46,10 @@
   <script>
     $(document).ready(function () {
       $.ajax({
-        url: "http://rest-service.guides.spring.io/greeting"
+        url: "https://jsonplaceholder.typicode.com/todos/1" // Replace with a working JSON URL
       }).then(function (data) {
-        $('.greeting-id').append(data.id);
-        $('.greeting-content').append(data.content);
+        console.log(data); // Log the response data to the browser's console
+        // Update your HTML elements with the response data as needed
       });
     });
   </script>
