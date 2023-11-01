@@ -2,6 +2,7 @@ package com.upload.main.services;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.upload.main.entity.UploadApi;
 import com.upload.main.response.UploadApiResponse;
 
 public interface UploadApiService {
@@ -9,6 +10,8 @@ public interface UploadApiService {
 
     UploadApiResponse previewFile(int fileId);
 
-    UploadApiResponse downloadFile(int fileId);
+    UploadApiResponse downloadFile(int fileId);    
+    
+    UploadApiResponse saveFileName(UploadApi uploadApi);
 
 }
