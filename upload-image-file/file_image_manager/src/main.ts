@@ -5,8 +5,9 @@ import { importProvidersFrom } from '@angular/core';
 import { AppComponent } from './app/app.component';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { Routes, provideRouter } from '@angular/router';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -26,4 +27,4 @@ const routes: Routes = [
   }
 ]
 
-bootstrapApplication(AppComponent, { providers: [provideRouter(routes), provideAnimations(), provideAnimations()] }).catch((err) => console.error(err));
+bootstrapApplication(AppComponent, { providers: [provideRouter(routes), provideAnimations(), provideAnimations(), provideHttpClient()] }).catch((err) => console.error(err));

@@ -17,6 +17,10 @@
     <mat-icon>collections</mat-icon>
     GALLERY
   </button>
+  <button mat-button routerLink="/">
+    <mat-icon>list</mat-icon>
+    LIST
+  </button>
 </mat-toolbar>
 <mat-drawer-container autosize>
   <mat-drawer #drawer opened="true" mode="side">
@@ -30,15 +34,19 @@
       </mat-list-item>
       <mat-expansion-panel [class.mat-elevation-z0]="true">
         <mat-expansion-panel-header>
-          Mobile Phone
+            PDFS
         </mat-expansion-panel-header>
         <mat-nav-list>
           <a mat-list-item routerLink="#">
-            <span>iOS</span>
+            <span>UPLOAD</span>
           </a>
+         
+        </mat-nav-list>
+        <mat-nav-list>
           <a mat-list-item routerLink="#">
-            <span>Android</span>
+            <span>LIST</span>
           </a>
+         
         </mat-nav-list>
       </mat-expansion-panel>
       <mat-list-item>
