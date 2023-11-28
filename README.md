@@ -8,8 +8,12 @@ Spring boot is   module of spring framework which we speed up the development,
 ### RESSOURCES
 
 - [chillotech - YouTube](https://www.youtube.com/@chillotech) (AFRICA TOP tuto)
-
-- 
+- [The Dev World - by Sergio Lema - YouTube](https://www.youtube.com/@TheDevWorldbySergioLema) 
+- [Bouali Ali - YouTube](https://www.youtube.com/@BoualiAli) 
+- https://www.youtube.com/@TheDevWorldbySergioLema (top angular+spring boot) 
+-  https://www.youtube.com/@LearnCodeWithDurgesh
+-  https://www.youtube.com/@CodeJava
+- https://www.youtube.com/@DanVega 
 
 ### ARCHITECTURE
 
@@ -190,3 +194,5 @@ Because of the inheritance mentioned above, `JpaRepository` will have all the 
 ```html
 <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
 ```
+
+**application.properties**

@@ -1,4 +1,4 @@
-package com.upload.main.services;
+package com.upload.main.services.attachements;
 
 import org.springframework.web.multipart.MultipartFile;
 import com.upload.main.entity.Attachement;

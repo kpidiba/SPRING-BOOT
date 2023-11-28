@@ -1,4 +1,4 @@
-package com.upload.main.response;
+package com.upload.main.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

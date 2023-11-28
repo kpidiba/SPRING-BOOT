@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.upload.main.dto.AttachementResponse;
 import com.upload.main.entity.Attachement;
-import com.upload.main.response.AttachementResponse;
-import com.upload.main.services.AttachementService;
+import com.upload.main.services.attachements.AttachementService;
 
 @RestController
 public class AttachementController {

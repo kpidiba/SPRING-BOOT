@@ -1,4 +1,4 @@
-package com.upload.main.services;
+package com.upload.main.services.implementations;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.upload.main.entity.Attachement;
 import com.upload.main.repository.AttachementRepository;
+import com.upload.main.services.attachements.AttachementService;
 
 @Service
 public class AttachementServiceImpl implements AttachementService {
