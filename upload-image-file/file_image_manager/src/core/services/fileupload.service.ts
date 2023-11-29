@@ -6,7 +6,7 @@ import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
-  
+
 })
 export class FileuploadService {
   baseUrl = environment.apiUrl + "images";
@@ -15,12 +15,15 @@ export class FileuploadService {
   }
 
   uploadFile(register: FormGroup) {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-    this.http.post<ApiResponse>(`${this.baseUrl}/upload`,JSON.stringify(register),httpOptions).subscribe(
+    const formData = new FormData();
+    formData.append('file', register.get('file')?.value);
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    this.http.post<ApiResponse>(`${this.baseUrl}/upload`, formData,{headers}).subscribe(
       {
-        next:()=>{
-          console.log("ca marche");
-        },error:(error)=>{
+        next: (message) => {
+          console.log(message);
+        }, error: (error) => {
           console.log(error);
         }
       }

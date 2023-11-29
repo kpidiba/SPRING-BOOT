@@ -56,7 +56,7 @@ export class UploadComponent implements OnInit {
   }
 
   upload() {
-    // this.service.uploadFile(this.registerFile.value);
+    this.service.uploadFile(this.registerFile);
     this.registerFile.setValue({
       file: null
     });
