@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
-import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FileuploadService } from 'src/core/services/fileupload.service';
 import { imageValidator } from 'src/shared/validators/image.validator';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-upload',
   standalone: true,
@@ -18,7 +18,8 @@ import { imageValidator } from 'src/shared/validators/image.validator';
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent implements OnInit,OnDestroy {
+  subscription1$!: Subscription;
   selectedFileName!: string;
   registerFile!: FormGroup;
   imagePreview!: string;
@@ -26,6 +27,7 @@ export class UploadComponent implements OnInit {
   constructor(private fb: FormBuilder, private service: FileuploadService) {
 
   }
+  
 
   ngOnInit(): void {
     this.registerFile = this.fb.group({
@@ -56,7 +58,7 @@ export class UploadComponent implements OnInit {
   }
 
   upload() {
-    this.service.uploadFile(this.registerFile);
+    this.subscription1$ = this.service.uploadFile(this.registerFile);
     this.registerFile.setValue({
       file: null
     });
@@ -64,5 +66,7 @@ export class UploadComponent implements OnInit {
     this.selectedFileName = '';
   }
 
-
+  ngOnDestroy(): void {
+    this.subscription1$.unsubscribe();
+  }
 }

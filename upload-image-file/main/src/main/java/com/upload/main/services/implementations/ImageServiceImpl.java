@@ -3,8 +3,11 @@ package com.upload.main.services.implementations;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import com.upload.main.dto.ImageDTO;
 import com.upload.main.entity.Image;
+import com.upload.main.mappers.ImageMapper;
 import com.upload.main.repository.ImageRepository;
 import com.upload.main.services.attachements.ImageService;
 
@@ -28,8 +31,11 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public List<Image> getAll() {
-        return repository.findAll();
+    public List<ImageDTO> getAll() {
+        List<Image> images = repository.findAll();
+        return  images.stream()
+        .map(ImageMapper::maptoDto)
+        .collect(Collectors.toList());
     }
 
     @Override

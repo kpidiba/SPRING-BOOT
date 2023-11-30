@@ -1,12 +1,17 @@
 package com.upload.main.dto;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class ImageDTO {
+    private Long id;
     private String name;
-    private MultipartFile file;
+    private byte[] file;
 
-
+    
+    public ImageDTO(Long id, String name, byte[] file) {
+        this.id = id;
+        this.name = name;
+        this.file = file;
+    }
     public String getName() {
         return name;
     }
@@ -14,11 +19,17 @@ public class ImageDTO {
         this.name = name;
     }
 
-    public MultipartFile getFile() {
+    public byte[] getFile() {
         return file;
     }
-    public void setFile(MultipartFile file) {
+    public void setFile(byte[] file) {
         this.file = file;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
     

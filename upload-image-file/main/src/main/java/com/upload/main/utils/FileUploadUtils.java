@@ -26,6 +26,14 @@ public class FileUploadUtils {
         return uploadFile(imageFile, IMAGES_SUBFOLDER);
     }
 
+    public String deleteImage(String name){
+        return this.deleteFile(name, IMAGES_SUBFOLDER);
+    }
+
+    public String deletePdf(String name){
+        return this.deleteFile(name, PDFS_SUBFOLDER);
+    }
+
     public String uploadPdf(MultipartFile pdfFile) {
         return uploadFile(pdfFile, PDFS_SUBFOLDER);
     }
@@ -49,7 +57,6 @@ public class FileUploadUtils {
 
     private String uploadFile(MultipartFile file, String subfolderName) {
         String fileName = generateUniqueFileName(file.getOriginalFilename());
-
         try {
             Path subfolderPath = Paths.get(UPLOAD_DIR, subfolderName);
             Path filePath = subfolderPath.resolve(fileName);
@@ -59,7 +66,6 @@ public class FileUploadUtils {
             // Handle the exception appropriately
             return null;
         }
-
         return fileName; // Return the file name or handle upload failure
     }
 
@@ -75,5 +81,22 @@ public class FileUploadUtils {
             return fileName.substring(dotIndex);
         }
         return "";
+    }
+
+    private String deleteFile(String fileName, String subfolderName) {
+        try {
+            Path filePath = getFilePath(fileName, subfolderName);
+            Files.delete(filePath);
+            return "File deleted successfully: " + fileName;
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+            return "Failed to delete file: " + fileName;
+        }
+    }
+
+    private Path getFilePath(String fileName, String subfolderName) {
+        Path subfolderPath = Paths.get(UPLOAD_DIR, subfolderName);
+        return subfolderPath.resolve(fileName);
     }
 }
