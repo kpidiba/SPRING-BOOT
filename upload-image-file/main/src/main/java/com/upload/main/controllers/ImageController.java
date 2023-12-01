@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +26,6 @@ import java.nio.file.Paths;
 import org.springframework.core.io.Resource;
 import java.io.IOException;
 import java.io.File;
-
 
 @RestController
 @RequestMapping("/api/v1/images")
@@ -67,6 +68,19 @@ public class ImageController {
                 .headers(headers)
                 .contentLength(resource.contentLength())
                 .body(resource);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Image> deleteImage(@PathVariable("id") Long id) {
+        Image image = this.imageService.findImageById(id);
+
+        if (image == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        this.fileUploadUtils.deleteImage(image.getName());
+        this.imageService.deleteImage(image);
+
+        return ResponseEntity.ok(image);
     }
 
     // NOTE:MULTI PARAMETERS

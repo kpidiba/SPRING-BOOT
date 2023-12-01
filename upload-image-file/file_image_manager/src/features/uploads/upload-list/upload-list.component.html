@@ -34,13 +34,10 @@
                     <button mat-icon-button color="primary"  (click)="download(row.name)" matTooltip="DOWNLOAD VIA LINK">
                         <mat-icon matSuffix>download</mat-icon>
                     </button>
-                    <!-- <button mat-icon-button color="accent" [swal]="deleteSwal" matTooltip="SUPPRIMER">
+                    <button mat-icon-button color="accent" (click)="showAlert(row.id)" matTooltip="SUPPRIMER">
                         <mat-icon matSuffix>delete</mat-icon>
                     </button>
-                    <swal #deleteSwal title="Voulez vous supprimer l'image?"
-                        text="Vous ne pourrez plus revenir en arriere" icon="warning"
-                        [showCancelButton]="true" [focusCancel]="true" (confirm)="delete(row.id)">
-                    </swal> -->
+                    
                 </td>
             </ng-container>
 

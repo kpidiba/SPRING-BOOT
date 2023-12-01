@@ -11,22 +11,23 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ImageDto } from 'src/core/interfaces/ImageDto';
 import { FileuploadService } from 'src/core/services/fileupload.service';
 import { Router } from '@angular/router';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { SweetAlert2LoaderService, SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { MatButtonModule } from '@angular/material/button';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-upload-list',
   standalone: true,
+  providers: [SweetAlert2LoaderService],
   imports: [CommonModule, MatPaginatorModule, MatTooltipModule, MatButtonModule, MatSortModule, MatIconModule, MatInputModule, SweetAlert2Module, MatFormFieldModule, MatTableModule],
   templateUrl: './upload-list.component.html',
   styleUrls: ['./upload-list.component.css']
 })
 export class UploadListComponent implements OnInit, OnDestroy {
-  subscription1$!: Subscription;
-  subscription2$!: Subscription;
+  subscription1$!: Subscription|undefined;
+  subscription2$!: Subscription|undefined;
   imagePreview!: string;
   public images!: ImageDto[];
   @ViewChild(MatPaginator) paginator !: MatPaginator;
@@ -37,6 +38,11 @@ export class UploadListComponent implements OnInit, OnDestroy {
 
   }
 
+  ngOnInit(): void {
+    this.getAllImages();
+  }
+
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -45,8 +51,31 @@ export class UploadListComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit(): void {
-    this.getAllImages();
+
+  showAlert(id: number) {
+    Swal.fire({
+      title: "Voulez vous supprimer l'image?",
+      text: "Vous ne pourrez plus revenir en arriere",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui, Supprimer le!",
+    }).then((result) => {
+      if (result) {
+        console.log("yes");
+
+      }
+      this.delete(id).subscribe({
+        next: () => {
+          this.getAllImages();
+
+          this.toastr.success('IMAGE SUPPRIME', "SUCCESS");
+        }, error: () => {
+          this.toastr.error("SUPPRESSION FAILED", "ERROR");
+        }
+      });;
+    });
   }
 
   getAllImages() {
@@ -63,34 +92,23 @@ export class UploadListComponent implements OnInit, OnDestroy {
   }
 
   getImageSrc(file: Uint8Array): string {
-    console.log( file);
-    
     if (file) {
-      return 'data:image/png;base64,' + this.arrayBufferToBase64(file);
+      return `data:image/png;base64,${file}`;
     }
     return "assets/default.png";
   }
 
-  arrayBufferToBase64(buffer: ArrayBuffer) {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-  
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-  
-    return btoa(binary);
+  delete(id: number) {
+    return this.service.deleteImage(id);
   }
-
 
   download(name: string) {
     this.subscription2$ = this.service.downloadImage(name);
   }
 
   ngOnDestroy(): void {
-    this.subscription1$.unsubscribe();
-    this.subscription2$.unsubscribe();
+    this.subscription1$?.unsubscribe();
+    this.subscription2$?.unsubscribe();
   }
 
 }

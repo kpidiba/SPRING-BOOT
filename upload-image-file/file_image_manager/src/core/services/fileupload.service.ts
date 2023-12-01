@@ -46,12 +46,15 @@ export class FileuploadService {
       {
         next: (message) => {
           this.toastr.success(message.message, "SUCCESS")
-          console.log(message);
         }, error: (error) => {
-          console.log(error, "ERROR");
+          this.toastr.error("UPLOAD FAILED","ERROR");
         }
       }
     );
+  }
+
+  deleteImage(id:number){
+    return this.http.delete(`${this.baseUrl}` + "/delete/"+id);
   }
 
 }

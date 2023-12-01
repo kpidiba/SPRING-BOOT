@@ -19,7 +19,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit,OnDestroy {
-  subscription1$!: Subscription;
+  subscription1$!: Subscription | undefined;
   selectedFileName!: string;
   registerFile!: FormGroup;
   imagePreview!: string;
@@ -67,6 +67,6 @@ export class UploadComponent implements OnInit,OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription1$.unsubscribe();
+    this.subscription1$?.unsubscribe();
   }
 }
