@@ -9,12 +9,12 @@ import java.nio.file.StandardCopyOption;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.ServletContext;
 
 @Component
+
 public class FileUploaderHelper {
     // public final String UPLOAD_DIR =
     // "C:\\Users\\kpidi\\Coding\\Github\\SPRING-BOOT\\bootrestapi\\src\\main\\resources\\static\\image";

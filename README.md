@@ -5,6 +5,79 @@ Spring boot is   module of spring framework which we speed up the development,
 - Scan the class path and find  the dependency it will  automatically configure the things.
 - define **controller folder in** the Main class folder or main package
 
+### RESSOURCES
+
+- [chillotech - YouTube](https://www.youtube.com/@chillotech) (AFRICA TOP tuto)
+- [The Dev World - by Sergio Lema - YouTube](https://www.youtube.com/@TheDevWorldbySergioLema) 
+- [Bouali Ali - YouTube](https://www.youtube.com/@BoualiAli) 
+- https://www.youtube.com/@TheDevWorldbySergioLema (top angular+spring boot) 
+-  https://www.youtube.com/@LearnCodeWithDurgesh
+-  https://www.youtube.com/@CodeJava
+- https://www.youtube.com/@DanVega 
+
+### ARCHITECTURE
+
+```scss
+src
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── yourcompany
+│   │           └── yourproject
+│   │               ├── config         (Application configuration classes)
+│   │               ├── controller     (REST API controllers)
+│   │               ├── exception      (Custom exception classes)
+│   │               ├── model          (Data model classes)
+│   │               ├── repository     (Database repositories)
+│   │               ├── service        (Business logic services)
+│   │               ├── util           (Utility classes)
+│   │               ├── Application.java (Main application class)
+│   │               └── ...
+│   ├── resources
+│   │   ├── static       (Static resources like CSS, JS, images)
+│   │   ├── templates    (HTML templates, if using server-side rendering)
+│   │   ├── application.properties (Application-wide properties)
+│   │   ├── application.yml        (YAML configuration, if preferred)
+│   │   └── ...
+└── test
+    ├── java
+    │   └── com
+    │       └── yourcompany
+    │           └── yourproject
+    │               ├── controller    (Controller test classes)
+    │               ├── service       (Service test classes)
+    │               ├── util          (Utility test classes)
+    │               ├── ApplicationTests.java (Main test class)
+    │               └── ...
+    └── resources
+        ├── application.properties (Test-specific properties)
+        └── ...
+```
+
+**Explanation of Key Folders:**
+
+- **config:** Contains configuration classes, such as beans, security configurations, and other application-wide settings.
+
+- **controller:** Houses your REST API controller classes, which handle incoming HTTP requests.
+
+- **exception:** Contains custom exception classes, which you can use to handle application-specific errors.
+
+- **model:** Stores data model classes, representing your application's entities.(entity,dto)
+
+- **repository:** Holds database repository interfaces or classes if you're using a database.
+
+- **service:** Houses business logic services that orchestrate interactions between controllers and repositories.
+
+- **util:** Contains utility classes that are used across the application.
+
+- **static:** This folder holds static resources like CSS, JavaScript, and images, typically used for web applications.
+
+- **templates:** If you're using server-side rendering with templating engines like Thymeleaf, this is where your HTML templates would reside.
+
+- **application.properties/application.yml:** Configuration files for properties that configure your application. They include database settings, logging levels, etc.
+
+- **test:** This folder mirrors the `main` folder's structure but is dedicated to test classes and resources.
+
 ## TABLE OF CONTENT
 
 ### I- [SPRING FRAMEWORK](https://github.com/kpidiba/SPRING-FRAMEWORK)
@@ -128,3 +201,5 @@ Because of the inheritance mentioned above, `JpaRepository` will have all the 
 ```html
 <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
 ```
+
+**application.properties**

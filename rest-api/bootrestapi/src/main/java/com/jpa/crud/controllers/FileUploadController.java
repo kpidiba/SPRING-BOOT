@@ -21,7 +21,7 @@ public class FileUploadController {
         // return ResponseEntity.ok("name: "+profile.getName()+"\n size:
         // "+profile.getSize()+"\n content type: "+profile.getContentType()+"\n original
         // name: "+profile.getOriginalFilename());
-
+            
         // NOTE: controle effectue sur le fichier
         if (profile.isEmpty()) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("file is empty");
