@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,10 +12,11 @@ import { ImageDto } from 'src/core/interfaces/ImageDto';
 import { FileuploadService } from 'src/core/services/fileupload.service';
 import { Router } from '@angular/router';
 import { SweetAlert2LoaderService, SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { Subscription } from 'rxjs';
+import { Subscription, takeUntil } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { MatButtonModule } from '@angular/material/button';
 import Swal from 'sweetalert2';
+import { DestroyService } from 'src/shared/services/destroy/destroy.service';
 
 @Component({
   selector: 'app-upload-list',
@@ -26,17 +27,18 @@ import Swal from 'sweetalert2';
   styleUrls: ['./upload-list.component.css']
 })
 export class UploadListComponent implements OnInit, OnDestroy {
-  subscription1$!: Subscription|undefined;
-  subscription2$!: Subscription|undefined;
+  subscription1$!: Subscription | undefined;
+  subscription2$!: Subscription | undefined;
   imagePreview!: string;
   public images!: ImageDto[];
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   public dataSource!: MatTableDataSource<ImageDto>;
   displayedColumns: string[] = ['id', 'nom', 'image', 'action'];
-  constructor(private service: FileuploadService, private router: Router, private toastr: ToastrService) {
-
-  }
+  private service = inject(FileuploadService);
+  private router = inject(Router);
+  private toastr = inject(ToastrService);
+  private destroyService = inject(DestroyService);
 
   ngOnInit(): void {
     this.getAllImages();
@@ -62,19 +64,16 @@ export class UploadListComponent implements OnInit, OnDestroy {
       cancelButtonColor: "#d33",
       confirmButtonText: "Oui, Supprimer le!",
     }).then((result) => {
-      if (result) {
-        console.log("yes");
-
+      if (result.isConfirmed) {
+        this.delete(id).pipe(takeUntil(this.destroyService.onDestroy$)).subscribe({
+          next: () => {
+            this.getAllImages();
+            this.toastr.success('IMAGE SUPPRIME', "SUCCESS");
+          }, error: () => {
+            this.toastr.error("SUPPRESSION FAILED", "ERROR");
+          }
+        });;
       }
-      this.delete(id).subscribe({
-        next: () => {
-          this.getAllImages();
-
-          this.toastr.success('IMAGE SUPPRIME', "SUCCESS");
-        }, error: () => {
-          this.toastr.error("SUPPRESSION FAILED", "ERROR");
-        }
-      });;
     });
   }
 

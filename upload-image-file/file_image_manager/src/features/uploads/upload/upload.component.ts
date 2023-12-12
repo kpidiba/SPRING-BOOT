@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card'
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -23,10 +23,8 @@ export class UploadComponent implements OnInit,OnDestroy {
   selectedFileName!: string;
   registerFile!: FormGroup;
   imagePreview!: string;
-
-  constructor(private fb: FormBuilder, private service: FileuploadService) {
-
-  }
+  private fb = inject(FormBuilder);
+  private service = inject(FileuploadService);
   
 
   ngOnInit(): void {
