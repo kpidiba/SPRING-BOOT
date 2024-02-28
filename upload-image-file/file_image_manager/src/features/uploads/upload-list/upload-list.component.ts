@@ -9,7 +9,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ImageDto } from 'src/core/interfaces/ImageDto';
-import { FileuploadService } from 'src/core/services/fileupload.service';
 import { Router } from '@angular/router';
 import { SweetAlert2LoaderService, SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription, takeUntil } from 'rxjs';
@@ -17,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatButtonModule } from '@angular/material/button';
 import Swal from 'sweetalert2';
 import { DestroyService } from 'src/shared/services/destroy/destroy.service';
+import { FileuploadService } from 'src/core/services/fileupload/fileupload.service';
 
 @Component({
   selector: 'app-upload-list',
@@ -88,6 +88,14 @@ export class UploadListComponent implements OnInit, OnDestroy {
         this.toastr.error("UPLOAD FAILED", "ERROR");
       }
     });
+  }
+
+  open(file:string){
+    const arrayBuffer = Uint8Array.from(atob(file), c => c.charCodeAt(0)).buffer;
+    const blob = new Blob([arrayBuffer]);
+    const fileURL = URL.createObjectURL(blob);
+      window.open(fileURL, '_blank');
+    // const fileURL = URL.createObjectURL(file);
   }
 
   getImageSrc(file: Uint8Array): string {

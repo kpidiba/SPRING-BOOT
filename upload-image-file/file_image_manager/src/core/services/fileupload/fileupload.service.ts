@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiResponse } from '../interfaces/ApiResponse';
+import { ApiResponse } from '../../interfaces/ApiResponse';
 import { environment } from 'src/environments/environment.development';
 import { FormGroup } from '@angular/forms';
-import { ImageDto } from '../interfaces/ImageDto';
+import { ImageDto } from '../../interfaces/ImageDto';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({

@@ -5,9 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FileuploadService } from 'src/core/services/fileupload.service';
 import { imageValidator } from 'src/shared/validators/image.validator';
 import { Subscription } from 'rxjs';
+import { FileuploadService } from 'src/core/services/fileupload/fileupload.service';
 @Component({
   selector: 'app-upload',
   standalone: true,

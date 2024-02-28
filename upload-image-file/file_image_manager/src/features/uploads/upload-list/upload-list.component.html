@@ -23,7 +23,7 @@
             <ng-container matColumnDef="image">
                 <th mat-header-cell *matHeaderCellDef> IMAGE </th>
                 <td mat-cell *matCellDef="let row">
-                    <img height="100" width="100" [src]="getImageSrc(row.file)" >
+                    <img height="100" width="100" [src]="getImageSrc(row.file)" (click)="open(row.file)">
                 </td>
             </ng-container>
 
