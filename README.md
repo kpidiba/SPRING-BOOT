@@ -11,9 +11,13 @@ Spring boot is   module of spring framework which we speed up the development,
 - [The Dev World - by Sergio Lema - YouTube](https://www.youtube.com/@TheDevWorldbySergioLema) 
 - [Bouali Ali - YouTube](https://www.youtube.com/@BoualiAli) 
 - https://www.youtube.com/@TheDevWorldbySergioLema (top angular+spring boot) 
--  https://www.youtube.com/@LearnCodeWithDurgesh
--  https://www.youtube.com/@CodeJava
+- https://www.youtube.com/@LearnCodeWithDurgesh
+- https://www.youtube.com/@CodeJava
 - https://www.youtube.com/@DanVega 
+- [Spring I/O - YouTube](https://www.youtube.com/@SpringIOConference) 
+- https://spring.io/guides 
+- https://www.youtube.com/@DailyCodeBuffer 
+- [Code Elevate - YouTube](https://www.youtube.com/@CodeElevate) (Spring boot + angular)
 
 ### ARCHITECTURE
 
