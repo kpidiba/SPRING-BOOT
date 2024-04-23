@@ -18,6 +18,7 @@ Spring boot is   module of spring framework which we speed up the development,
 - https://spring.io/guides 
 - https://www.youtube.com/@DailyCodeBuffer 
 - [Code Elevate - YouTube](https://www.youtube.com/@CodeElevate) (Spring boot + angular)
+- https://www.youtube.com/@codwithzosh 
 
 ### ARCHITECTURE
 
@@ -147,12 +148,6 @@ WinSWNet4.exe uninstall //to uninstall
 
 - search in service to find him
 
-### VALIDATOR DEPENDENCIES
-
-```xml
-
-```
-
 ### APPLICATION PROPERTIES
 
 Application Properties support us to work in different environments. In this chapter, you are going to learn how to configure and specify the properties to a Spring Boot application.
@@ -177,6 +172,8 @@ spring.application.name = demoservice
 ### application.yml/application.yaml file
 
 The application.properties file is not that readable. So most of the time developers choose application.yml file over application.properties file. YAML is a superset of JSON, and as such is a very convenient format for specifying hierarchical configuration data. YAML is more readable and it is good for the developers to read/write configuration files. For example, let’s pick some of the properties files that we have explained above, and let’s write them in YAML format.
+
+# 
 
 ## CRUD
 
