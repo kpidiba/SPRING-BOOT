@@ -28,15 +28,33 @@ In conclusion, whether deploying a Spring Boot application as a Windows service 
 
 - define <finalName></finalName>  in pom.xml - build bracket
 
+- <build>
+      <plugins>
+              <plugin>
+                  <groupId>org.springframework.boot</groupId>
+                  <artifactId>spring-boot-maven-plugin</artifactId>
+                  <configuration>
+                      <executable>true</executable>
+                  </configuration>
+              </plugin>
+          </plugins>
+  </build>
+
 - in build> plugins>plugin(spring boot maven pulgin) add 
 
 ```xml
-<configuration><executable>true</executable> </configuration>
+<build>
+    <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+        </plugins>
+</build>
 ```
-
-- generate jar
-
-- go to  https://github.com/winsw/winsw and download 
 
 - rename the two files you decompressed with same name(WinSW.NET4)
 
