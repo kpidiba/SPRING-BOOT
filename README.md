@@ -5,6 +5,22 @@ Spring boot is   module of spring framework which we speed up the development,
 - Scan the class path and find  the dependency it will  automatically configure the things.
 - define **controller folder in** the Main class folder or main package
 
+### TABLE OF CONTENT
+
+1. [swagger](swagger/readme.md)
+
+II- 
+
+III- SPRING SECURITY
+
+IV- REST API
+
+V- TRICKS
+
+VI- BUGS
+
+VII- 
+
 ### RESSOURCES
 
 - [chillotech - YouTube](https://www.youtube.com/@chillotech) (AFRICA TOP tuto)
@@ -82,20 +98,6 @@ src
 - **application.properties/application.yml:** Configuration files for properties that configure your application. They include database settings, logging levels, etc.
 
 - **test:** This folder mirrors the `main` folder's structure but is dedicated to test classes and resources.
-
-## TABLE OF CONTENT
-
-### I- [SPRING FRAMEWORK](https://github.com/kpidiba/SPRING-FRAMEWORK)
-
-### II- [SERVLET](https://github.com/kpidiba/JSP---Servlet)
-
-### III- [SPRING SECURITY]()
-
-### IV- [REST API]()
-
-### V- [TRICKS]()
-
-### VI- [BUGS]()
 
 ### RUN SPRING BOOT APPLICATION AS A WINDOWS SERVICE
 

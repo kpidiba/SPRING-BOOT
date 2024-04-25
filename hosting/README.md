@@ -6,17 +6,7 @@
 
 - 
 
-### I- [SPRING FRAMEWORK](https://github.com/kpidiba/SPRING-FRAMEWORK)
-
-### II- [SERVLET](https://github.com/kpidiba/JSP---Servlet)
-
-### III- [SPRING SECURITY]()
-
-### IV- [REST API]()
-
-### V- [TRICKS]()
-
-### VI- [BUGS]()
+# 
 
 ### RUN SPRING BOOT APPLICATION AS A WINDOWS SERVICE
 
