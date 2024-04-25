@@ -7,7 +7,7 @@ Spring boot is   module of spring framework which we speed up the development,
 
 ### TABLE OF CONTENT
 
-1. [swagger](swagger/readme.md)
+1. [swagger](swagger/)
 
 II- 
 
