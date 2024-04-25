@@ -6,6 +6,7 @@ Swagger documentation with Spring Boot streamlines API development by automatica
 
 - [Official Documentation](https://springdoc.org/)
 - [Spring boot 3 - OpenApi Documentation | Swagger UI - YouTube](https://www.youtube.com/watch?v=2o_3hjUPAfQ&t=1s) 
+- https://swagger.io/docs 
 
 ### SWAGGER ENDPOINTS
 
@@ -63,4 +64,43 @@ public class YourController {
 
 By adding this annotation, you specify that the controller requires the `bearerAuth` security scheme, enabling token-based authentication for the endpoints defined in that controller.
 
+### Customizing Endpoint Documentation
 
+#### `@Operation`
+
+The `@Operation` annotation is part of the OpenAPI specification and is used to provide additional metadata for documenting API operations. It allows developers to describe the purpose and behavior of an API endpoint. Within the annotation, you can include details such as a description, summary, and responses.
+
+Example: 
+
+```java
+@Operation(
+    description = "Get endpoint manager",
+    summary = "This is a summary for management get endpoint",
+    responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200"
+            ),
+            @ApiResponse(
+                description = "Unauthorized / Invalid Token",
+                responseCode = "403"
+            )
+    }
+)
+```
+
+#### `@Tag(name="management")`
+
+```java
+@Tag(name = "management")
+```
+
+Assigns the specified name to the tag, allowing for the categorization and grouping of API endpoints under the designated category in the documentation.
+
+#### `@Hidden`
+
+```java
+@Hidden
+```
+
+Hides the annotated endpoint from the generated documentation. Useful for concealing endpoints that are still in development, deprecated, or intended solely for internal use. Ensures that the endpoint remains accessible within the application while being excluded from the public documentation
