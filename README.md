@@ -17,7 +17,7 @@ Spring boot is   module of spring framework which we speed up the development,
 
 ### RESSOURCES
 
-- [https://docs.spring.io/](https://docs.spring.io/) (MAIN DOCUMENTATION)
+- https://spring.io/projects  (MAIN DOCUMENTATION)
 - [chillotech - YouTube](https://www.youtube.com/@chillotech) (AFRICA TOP tuto)
 - [The Dev World - by Sergio Lema - YouTube](https://www.youtube.com/@TheDevWorldbySergioLema) 
 - [Bouali Ali - YouTube](https://www.youtube.com/@BoualiAli) 
@@ -30,6 +30,7 @@ Spring boot is   module of spring framework which we speed up the development,
 - https://www.youtube.com/@DailyCodeBuffer 
 - [Code Elevate - YouTube](https://www.youtube.com/@CodeElevate) (Spring boot + angular)
 - https://www.youtube.com/@codwithzosh 
+- [EnggAdda - YouTube](https://www.youtube.com/@enggadda) 
 - https://www.youtube.com/@TeddySmithDev 
 
 ### ARCHITECTURE
@@ -94,6 +95,12 @@ src
 - **application.properties/application.yml:** Configuration files for properties that configure your application. They include database settings, logging levels, etc.
 
 - **test:** This folder mirrors the `main` folder's structure but is dedicated to test classes and resources.
+
+## LOGS
+
+```xml
+logging.file.path=C:/Users/kpidi/logs
+```
 
 ### APPLICATION PROPERTIES
 

@@ -216,8 +216,6 @@ CommandLineRunner method called
 Application main method called
 ```
 
-CMD
-
 ## FAQs
 
 Can we use multiple methods to execute code on application startup?
