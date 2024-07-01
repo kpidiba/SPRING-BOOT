@@ -2,7 +2,7 @@
 
 - **Configure Multiple DataSources in Spring Boot | Spring Boot + Multiple Datasources + JPA**
   
-  This comprehensive YouTube tutorial guides you through configuring multiple data sources in a Spring Boot application using JPA. Ideal for developers looking to integrate and manage multiple databases efficiently. [Watch on YouTube](https://www.youtube.com/watch?v=RTyJ-agrTGc).
+  This comprehensive YouTube tutorial guides you through configuring multiple data sources in a Spring Boot application using JPA. Ideal for developers looking to integrate and manage multiple databases efficiently. [Watch on YouTube](https://www.youtube.com/watch?v=RTyJ-agrTGc) or [Spring Boot : How to connect with multiple databases using Spring Data JPA - YouTube](https://www.youtube.com/watch?v=mIFIb_JE47U&t=433s) .
 
 - **GitHub Repository: daisy-world/springboot-with-multiple-datasources**
   
