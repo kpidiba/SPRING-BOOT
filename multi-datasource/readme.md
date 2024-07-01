@@ -1,10 +1,12 @@
-# MULTI DATABASE CONNECTION WITH
+# MULTI DATABASE SOURCES CONNECTION SOURCES
 
-### SOURCES
+- **Configure Multiple DataSources in Spring Boot | Spring Boot + Multiple Datasources + JPA**
+  
+  This comprehensive YouTube tutorial guides you through configuring multiple data sources in a Spring Boot application using JPA. Ideal for developers looking to integrate and manage multiple databases efficiently. [Watch on YouTube](https://www.youtube.com/watch?v=RTyJ-agrTGc).
 
--  [Configure Multiple DataSources in Spring Boot | Spring Boot + Multiple Datasources + JPA - YouTube](https://www.youtube.com/watch?v=RTyJ-agrTGc) 
-
-- [GitHub - daisy-world/springboot-with-multiple-datasources](https://github.com/daisy-world/springboot-with-multiple-datasources) 
+- **GitHub Repository: daisy-world/springboot-with-multiple-datasources**
+  
+  Explore practical implementations of multiple datasources in Spring Boot with this GitHub repository. It provides clear examples and guidelines for setting up and managing multiple database connections seamlessly. [GitHub Repository](https://github.com/daisy-world/springboot-with-multiple-datasources).
 
 ## RULES
 
