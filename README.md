@@ -7,13 +7,16 @@ Spring boot is   module of spring framework which we speed up the development,
 
 ### TABLE OF CONTENT
 
-1. [swagger](swagger/)
-2. [deploy](deploy/)
-3. [exceptions](exceptions/)
+1. [swagger](swagger/readme.md)
+2. [deploy](deploy/readme.md)
+3. [exceptions](exceptions/readme.md)
 4. [hosting](hosting/)
 5. [rest-api](rest-api/)
 6. [thymeleaf](thymeleaf/)
-7. [Tricks](Tricks/)
+7. [Tricks](Tricks/readme.md) 
+8. [MUTLI DATASOURCES CONNECTIONS](./multi-datasource/readme.md) 
+9. [PROCEDURE](./procedure/readme.md)
+10. 
 
 ### RESSOURCES
 
@@ -32,6 +35,7 @@ Spring boot is   module of spring framework which we speed up the development,
 - https://www.youtube.com/@codwithzosh 
 - [EnggAdda - YouTube](https://www.youtube.com/@enggadda) 
 - https://www.youtube.com/@TeddySmithDev 
+-  [Code Decode - YouTube](https://www.youtube.com/@CodeDecode) (INTERVIEWS)
 
 ### ARCHITECTURE
 
