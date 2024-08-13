@@ -3,7 +3,8 @@
 - [SPRING BOOT STARTRUP](./startup-application-methods.md)
 - [LOMBOOK](./lombook.md) 
 - [SEED](./seed.md)
-- [thymeleaf add ui dependencies](./thymeleaf-ui-dependency.md)
+- [thymeleaf add ui dependencies](./thymeleaf-ui-dependency.md) 
+- [FTCLIENT](./ftpclient.md) 
 
 # Tricks for Enhancing Your Spring Boot Project
 

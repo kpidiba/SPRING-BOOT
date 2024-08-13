@@ -15,8 +15,7 @@ Spring boot is   module of spring framework which we speed up the development,
 6. [thymeleaf](thymeleaf/)
 7. [Tricks](Tricks/readme.md) 
 8. [MUTLI DATASOURCES CONNECTIONS](./multi-datasource/readme.md) 
-9. [PROCEDURE](./procedure/readme.md)
-10. 
+9. [PROCEDURE](./procedure/readme.md) 
 
 ### RESSOURCES
 
@@ -35,7 +34,7 @@ Spring boot is   module of spring framework which we speed up the development,
 - https://www.youtube.com/@codwithzosh 
 - [EnggAdda - YouTube](https://www.youtube.com/@enggadda) 
 - https://www.youtube.com/@TeddySmithDev 
--  [Code Decode - YouTube](https://www.youtube.com/@CodeDecode) (INTERVIEWS)
+- [Code Decode - YouTube](https://www.youtube.com/@CodeDecode) (INTERVIEWS)
 
 ### ARCHITECTURE
 
