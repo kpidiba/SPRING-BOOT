@@ -44,6 +44,7 @@ In conclusion, whether deploying a Spring Boot application as a Windows service 
 
 ```xml
 <build>
+    <finalName>Application Name</finalName>
     <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -60,6 +61,7 @@ In conclusion, whether deploying a Spring Boot application as a Windows service 
 
 **Create a Configuration XML file for WinSW:**
 
+- download (**WinSW.NET4.exe** and **sample-minimal.xml** ) https://github.com/winsw/winsw/releases 
 - Create an XML configuration file (e.g., `my-service.xml`) for WinSW. Below is a basic example:
 
 ```xml
@@ -79,7 +81,13 @@ In conclusion, whether deploying a Spring Boot application as a Windows service 
 - `<executable>`: The executable to run (in this case, `java`).
 - `<arguments>`: The arguments to pass to the executable (in this case, the path to your Spring Boot JAR).
 - `<logpath>`: The path where the service logs will be stored.
+- **RENAME same-minimal.xml as WinSW.NET4**
+- run cmd as administrator
 
 ```bash
 WinSW.NET4.exe install
+```
+
+```xml
+WinSW.NET4.exe uninstall  
 ```
