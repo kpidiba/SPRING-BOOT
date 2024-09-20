@@ -16,6 +16,14 @@ Swagger UI Endpoint:
 http://server:port/context-path/swagger-ui.html
 ```
 
+Define Custom Route
+
+```json
+springdoc.api-docs.path=/api-docs
+```
+
+
+
 Swagger OpenAPI Dependency:
 
 ```xml
@@ -28,6 +36,13 @@ Swagger OpenAPI Dependency:
 
 Note: Ensure to exclude the Swagger route from Spring Security configurations.
 
+### SECURITY ADD TO WHITE_LIST
+
+```json
+"/swagger-ui.html","/swagger-ui/**","/swagger-resources/**",
+"/swagger-resources","/v2/api-docs", "/v3/api-docs","/v3/api-docs/**"
+```
+
 ### OPEN API CONFIGURATION
 
 To enable OpenAPI documentation for your Spring Boot application, add the following `OpenApiConfig` class:
@@ -36,7 +51,7 @@ To enable OpenAPI documentation for your Spring Boot application, add the follow
 @OpenAPIDefinition(info = @Info(title = "FILE MANAGEMENT", version = "1.0.0", license = @License(name = "Apache 2.0", url = "https://www.apache.org/licenses/LICENSE-2.0"), description = "File Management Project With Spring boot and Angular", contact = @Contact(name = "KBrightCoder", email = "kpidibadavid1@gmail.com", url = "https://davidkbright.com")), servers = {
         @Server(description = "Local Server", url = "http://localhost:8080"),
         @Server(description = "Production Server", url = "https://davidkbright.com")
-})
+}, security = @SecurityRequirement(name = "bearerAuth"))
 @SecurityScheme(
     name="bearerAuth",
     description = "JWT auth in the form of Bearer token",
