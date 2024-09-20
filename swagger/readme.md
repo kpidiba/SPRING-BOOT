@@ -22,8 +22,6 @@ Define Custom Route
 springdoc.api-docs.path=/api-docs
 ```
 
-
-
 Swagger OpenAPI Dependency:
 
 ```xml
@@ -106,16 +104,65 @@ Example:
 
 #### `@Tag(name="management")`
 
-```java
-@Tag(name = "management")
-```
+The `@Tag` annotation can be applied at class or method level and is used to group the APIs in a meaningful way.
 
 Assigns the specified name to the tag, allowing for the categorization and grouping of API endpoints under the designated category in the documentation.
 
+For instance, let’s add this annotation to our GET methods:
+
+```java
+@Tag(name = "get", description = "GET methods of Employee APIs")
+@GetMapping("/employees")
+public List<Employee> findAllEmployees() {
+   return repository.findAll();
+}
+
+@Tag(name = "get", description = "GET methods of Employee APIs")
+@GetMapping("/employees/{employeeId}")
+public Employee getEmployee(@PathVariable int employeeId) {
+   Employee employee = repository.findById(employeeId)
+           .orElseThrow(() -> new RuntimeException("Employee id not found - " + employeeId));
+   return employee;
+}
+```
+
 #### `@Hidden`
+
+Hides the annotated endpoint from the generated documentation. Useful for concealing endpoints that are still in development, deprecated, or intended solely for internal use. Ensures that the endpoint remains accessible within the application while being excluded from the public documentation
 
 ```java
 @Hidden
 ```
 
-Hides the annotated endpoint from the generated documentation. Useful for concealing endpoints that are still in development, deprecated, or intended solely for internal use. Ensures that the endpoint remains accessible within the application while being excluded from the public documentation
+### @Operation annotation
+
+The `@Operation` annotation enables the developers to provide additional information about a method, such as summary and description.
+
+Let’s update our `updateEmployee()` method:
+
+```java
+@Operation(summary = "Update an employee",
+       description = "Update an existing employee. The response is updated Employee object with id, first name, and last name.")
+@PutMapping("/employees")
+public Employee updateEmployee(@RequestBody Employee employee) {
+   Employee theEmployee = repository.save(employee);
+   return theEmployee;
+}
+```
+
+
+
+### @Parameter annotation
+
+The `@Parameter` annotation can be used on a method parameter to define parameters for the operation. For example,
+
+```java
+public Employee getEmployee(@Parameter(
+       description = "ID of employee to be retrieved",
+       required = true)
+       @PathVariable int employeeId) {
+   Employee employee = repository.findById(employeeId)
+           .orElseThrow(() -> new RuntimeException("Employee id not found - " + employeeId));
+   return employee;
+}
+```
