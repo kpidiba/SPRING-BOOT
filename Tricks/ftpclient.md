@@ -76,7 +76,6 @@ public class FtpClientUtil {
         return ftpClient;
     }
 }
-
 ```
 
 #### Using `FtpClientUtil` in a Service:
@@ -140,7 +139,6 @@ public class FtpService {
         }
     }
 }
-
 ```
 
 ### DELETE FILES AND FOLDER
@@ -152,6 +150,7 @@ public class FtpService {
         final String DOS = "DES";
         try {
             ftpClient =ftpClientUtil.createFtpClient();
+            ftpClient.setFileType(FTP.BINARY_FILE_TYPE); // Set binary file type
             System.out.println("FTP Client Connection: " + ftpClient.isConnected());
 
             // NOTE: CREATE A FOLDER
@@ -161,7 +160,7 @@ public class FtpService {
                 System.out.println(ftpClient.printWorkingDirectory()+"working 1");
                 // Change to parent directory
                 System.out.println(ftpClient.printWorkingDirectory()+"working 10");
-                
+
                 // Delete contents of the directory
                 deleteDirectoryContents(folderName,ftpClient);
                 ftpClient.changeWorkingDirectory("..");
