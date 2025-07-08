@@ -92,7 +92,7 @@ public class EmailService {
     public void sendEmail(String to, String subject, String text) {
     // Crée un objet SimpleMailMessage pour représenter l'email
     SimpleMailMessage message = new SimpleMailMessage();
-    
+
     message.setFrom("centif@centif.tg");
 
     // Définit le destinataire de l'email
