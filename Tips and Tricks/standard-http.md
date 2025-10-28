@@ -10,8 +10,6 @@ To ensure consistency and clarity in your API responses, we define a reusable `A
 
 - Improve **API documentation** and **developer experience**
 
-
-
 ## 📘 Example Response Format
 
 Instead of returning raw data:
@@ -78,7 +76,6 @@ public class ResponseUtil {
         return ResponseEntity.ok(response);
     }
 }
-
 ```
 
 ---
@@ -119,7 +116,4 @@ src/main/java/com/yourcompany/yourapp
 │   └── ErrorResponse.java     ← ✅ Place here
 ├── util
 │   └── ResponseUtil.java      ← ✅ Optional helper
-
 ```
-
-

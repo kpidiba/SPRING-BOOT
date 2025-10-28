@@ -8,8 +8,6 @@
 
 - 
 
-
-
 ![](https://miro.medium.com/v2/resize:fit:434/format:webp/0*LEK1Kzs_JjD08ZaS.png)
 
 ## Overview
@@ -61,18 +59,47 @@ We've created specific exception types for different error scenarios:
 
 ```java
 // When a book isn't found
+@ExceptionHandler(BookNotFoundException.class)
 public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException(Integer bookId) {
         super("Book not found with ID: " + bookId);
     }
 }
 
-// For bad/invalid requests
-public class BadRequestException extends RuntimeException {
-    public BadRequestException(String message) {
-        super(message);
+
+@ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorEntity> handleBadRequest(BadRequestException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
-}
+
+    @ExceptionHandler(FileNotFoundException.class)
+    public ResponseEntity<ErrorEntity> handleFileNotFound(FileNotFoundException ex) {
+        return buildErrorResponse("Fichier introuvable : " + ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorEntity> handleIllegalArgument(IllegalArgumentException ex) {
+        return buildErrorResponse("Paramètre invalide : " + ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ErrorEntity> handleRuntimeException(RuntimeException ex) {
+        return buildErrorResponse("Erreur interne : " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorEntity> handleGeneralException(Exception ex) {
+        return buildErrorResponse("Erreur inattendue : " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    private ResponseEntity<ErrorEntity> buildErrorResponse(String message, HttpStatus status) {
+        ErrorEntity error = ErrorEntity.builder()
+                .localDateTime(LocalDateTime.now())
+                .message(message)
+                .httpStatus(status.value())
+                .build();
+        return ResponseEntity.status(status).body(error);
+    }
 ```
 
 ### Global Exception Handler
@@ -82,7 +109,7 @@ The `GlobalExceptionHandler` class centralizes all exception handling:
 ```java
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    
+
     @ExceptionHandler(BookNotFoundException.class)
     public ResponseEntity<ErrorEntity> handleBookNotFound(BookNotFoundException ex) {
         ErrorEntity error = ErrorEntity.builder()
