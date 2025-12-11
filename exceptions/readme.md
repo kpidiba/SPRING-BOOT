@@ -58,6 +58,19 @@ public class ApiResponse<T> {
 We've created specific exception types for different error scenarios:
 
 ```java
+
+@ExceptionHandler(BadRequestException.class)
+public class ExcelFileException extends RuntimeException{
+
+    public ExcelFileException(String message){
+        super(message);
+    }
+
+    public ExcelFileException(String message,Throwable cause){
+        super(message,cause);
+    }
+}
+
 // When a book isn't found
 @ExceptionHandler(BookNotFoundException.class)
 public class BookNotFoundException extends RuntimeException {
@@ -67,39 +80,6 @@ public class BookNotFoundException extends RuntimeException {
 }
 
 
-@ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<ErrorEntity> handleBadRequest(BadRequestException ex) {
-        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(FileNotFoundException.class)
-    public ResponseEntity<ErrorEntity> handleFileNotFound(FileNotFoundException ex) {
-        return buildErrorResponse("Fichier introuvable : " + ex.getMessage(), HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorEntity> handleIllegalArgument(IllegalArgumentException ex) {
-        return buildErrorResponse("Paramètre invalide : " + ex.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<ErrorEntity> handleRuntimeException(RuntimeException ex) {
-        return buildErrorResponse("Erreur interne : " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorEntity> handleGeneralException(Exception ex) {
-        return buildErrorResponse("Erreur inattendue : " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    private ResponseEntity<ErrorEntity> buildErrorResponse(String message, HttpStatus status) {
-        ErrorEntity error = ErrorEntity.builder()
-                .localDateTime(LocalDateTime.now())
-                .message(message)
-                .httpStatus(status.value())
-                .build();
-        return ResponseEntity.status(status).body(error);
-    }
 ```
 
 ### Global Exception Handler
@@ -111,34 +91,14 @@ The `GlobalExceptionHandler` class centralizes all exception handling:
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(BookNotFoundException.class)
-    public ResponseEntity<ErrorEntity> handleBookNotFound(BookNotFoundException ex) {
-        ErrorEntity error = ErrorEntity.builder()
-                .localDateTime(LocalDateTime.now())
-                .message(ex.getMessage())
-                .httpStatus(HttpStatus.NOT_FOUND.value())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    public ResponseEntity<ApiResponse<String>> handleBookNotFound(BookNotFoundException ex) {
+        ApiResponse<String> response = new ApiResponse<>(
+            HttpStatus.NOT_FOUND.value(),
+            ex.getMessage(),
+            null);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
-    @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<ErrorEntity> handleBadRequest(BadRequestException ex) {
-        ErrorEntity error = ErrorEntity.builder()
-                .localDateTime(LocalDateTime.now())
-                .message(ex.getMessage())
-                .httpStatus(HttpStatus.BAD_REQUEST.value())
-                .build();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
-    }
-
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<ErrorEntity> handleRuntimeException(RuntimeException ex) {
-        ErrorEntity error = ErrorEntity.builder()
-                .localDateTime(LocalDateTime.now())
-                .message(ex.getMessage())
-                .httpStatus(HttpStatus.FORBIDDEN.value())
-                .build();
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
-    }
 }
 ```
 
